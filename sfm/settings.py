@@ -1,18 +1,30 @@
 # Django settings for sfm project.
 
+__author__ = "Eraldo Helal"
+__version__ = "v4"
+
+import os.path
+
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
+import urlparse
+
+DOMAIN = 'http://localhost:8000/'
+from django.core.urlresolvers import reverse_lazy
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Eraldo Helal', 'eraldo@eraldo.org'),
+    ('daef', 'daef@sourcemonk.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'data.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -24,11 +36,11 @@ DATABASES = {
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Vienna'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'de-at'
 
 SITE_ID = 1
 
@@ -78,7 +90,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '2k(-2jmtc#49m2jbktc-@a^9=qw#ix3)5*qt@vndg13%)775xb'
+SECRET_KEY = '<your-secret-code-goes-here>'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -106,6 +118,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_DIR, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -116,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -149,3 +162,18 @@ LOGGING = {
         },
     }
 }
+
+# custom user model
+AUTH_USER_MODEL = 'artists.Artist'
+
+# account settings
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGOUT_URL = reverse_lazy('accounts:logout')
+LOGIN_ERROR_URL = reverse_lazy('accounts:login-error')
+LOGIN_REDIRECT_URL = reverse_lazy('website:home')
+
+# import local overwrite settings
+try:
+    from local import *
+except ImportError:
+    pass
