@@ -135,6 +135,7 @@ INSTALLED_APPS = (
 
     # main content apps
     'artists', # custom users
+    'audiotracks',
 )
 
 # A sample logging configuration. The only tangible logging
