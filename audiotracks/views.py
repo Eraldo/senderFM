@@ -1,4 +1,5 @@
 import os
+from django.contrib.auth import get_user_model
 
 from django.utils.translation  import ugettext
 from django.contrib.auth.decorators import login_required
@@ -13,7 +14,6 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from django.contrib import messages
-from django.contrib.auth.models import User
 
 import mutagen
 from mutagen.easyid3 import EasyID3KeyError
@@ -58,7 +58,7 @@ def index(request, username=None, page_number=None):
 
 
 def user_index(request, username, page_number=None):
-    user = get_object_or_404(User, username=username)
+    user = get_object_or_404(get_user_model(), username=username)
     tracks = user.tracks.order_by('-created_at').all()
     page, tracks = paginate(tracks, page_number)
     base_path = urlresolvers.reverse('user_index', args=[username])
