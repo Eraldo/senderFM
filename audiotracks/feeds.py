@@ -4,8 +4,8 @@
 import mimetypes
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.syndication.views import Feed
-from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
@@ -67,7 +67,7 @@ class UserTracks(AllTracks):
 
     def get_object(self, request, username):
         self.request = request
-        return get_object_or_404(User, username=username)
+        return get_object_or_404(get_user_model(), username=username)
 
     def link(self, user):
         return self.request.build_absolute_uri("/%s/" % user.username)

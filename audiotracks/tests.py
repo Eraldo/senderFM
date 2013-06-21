@@ -3,7 +3,7 @@ from os.path import dirname, abspath
 import shutil
 
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.test.client import Client
 import mutagen
@@ -19,8 +19,9 @@ class TestViews(TestCase):
     urls = 'urls'
 
     def setUp(self):
-        User.objects.create_user("bob", "bob@example.com", "secret")
-        User.objects.create_user("alice", "alice@example.com", "secret")
+        user_model = get_user_model()
+        user_model.objects.create_user("bob", "bob@example.com", "secret")
+        user_model.objects.create_user("alice", "alice@example.com", "secret")
         self.client = Client()
         response = self.client.login(username='bob', password='secret')
 

@@ -2,7 +2,6 @@ import os
 import mimetypes
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation  import ugettext_lazy as _
