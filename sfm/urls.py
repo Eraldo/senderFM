@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+__author__ = "Eraldo Helal"
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'sfm.views.home', name='home'),
@@ -11,6 +13,8 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    url(r'^pages/', include('pages.urls', namespace="pages")),
 
     url("^track", include("audiotracks.urls")),
     url("^(?P<username>[\w\._-]+)/track", include("audiotracks.urls")),

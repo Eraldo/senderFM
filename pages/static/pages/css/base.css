@@ -1,0 +1,33 @@
+body {
+  padding-top: 50px;
+}
+.content {
+  padding: 40px 15px;
+  text-align: center;
+}
+#player {
+    padding: 6px 12px;
+    margin: 0 auto;
+}
+#player .audiojs, #player .audiojs .loaded {
+    background-image: none;
+    background: none;
+}
+#player .audiojs .progress {
+    background-image: none;
+}
+#player .audiojs .play-pause {
+    width: 40px;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}
+.navbar-brand img {
+    height: 40px;
+}
+
+.account {
+    padding: 5px 15px;
+    padding-right: 0;
+}
