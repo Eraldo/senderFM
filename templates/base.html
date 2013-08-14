@@ -14,6 +14,7 @@
     <!-- Custom styles for this template -->
     <link href="{{ STATIC_URL }}pages/css/base.css" rel="stylesheet">
 
+    {% block extra-head %}{% endblock %}
 </head>
 
 <body>
@@ -23,12 +24,18 @@
 <div class="container">
 
     <div class="content">
+        <ul class="breadcrumb">
+            {% block breadcrumbs %}
+            {% endblock %}
+        </ul>
         {% block content %}
         {% endblock %}
     </div>
 
 </div>
 <!-- /.container -->
+
+{% include 'footer.html' %}
 
 {# SCRIPTS #}
 
@@ -43,11 +50,16 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
 
-<script src="{{ STATIC_URL }}pages/audiojs/audio.min.js"></script>
+{#<script src="{{ STATIC_URL }}pages/audiojs/audio.min.js"></script>#}
+{#<script>#}
+{#    audiojs.events.ready(function () {#}
+{#        var as = audiojs.createAll();#}
+{#    });#}
+{#</script>#}
+
 <script>
-    audiojs.events.ready(function () {
-        var as = audiojs.createAll();
-    });
+    // determine the active selection in the menu
+    $('#menu a[href*="' + location.pathname.split("/")[2] + '"][class!="noselect"]').parent("li").addClass('active');
 </script>
 
 {% block extra-script %}{% endblock %}

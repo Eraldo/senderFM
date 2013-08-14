@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    artists
+{% endblock %}
+
+{% block content %}
+    <h1>artists</h1>
+    {% for artist in object_list %}
+        <li><a href="{% url 'artists:artist_detail' pk=artist.pk %}">{{ artist }}</li>
+    {% endfor %}
+{% endblock %}

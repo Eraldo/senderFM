@@ -1,11 +1,17 @@
 {% extends "audiotracks/mediaelement_base.html" %}
 {% load i18n %}
 
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="active">my tracks</li>
+{% endblock %}
+
+
 {% block body %}
 <h1>
-  {% blocktrans %}Tracks from {{ username }}{% endblocktrans %}
+  {% blocktrans %}tracks from {{ username }}{% endblocktrans %}
 </h1>
-<a href="{% url 'tracks_feed' username %}">Podcast feed</a>,
+<a href="{% url 'tracks_feed' username %}">podcast feed</a>,
 <a href="{% url 'm3u' username %}">m3u playlist</a>
 <ul class="audiotracks-list">
 {% for track in tracks %}

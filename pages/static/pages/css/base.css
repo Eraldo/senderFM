@@ -1,33 +1,86 @@
 body {
-  padding-top: 50px;
+    padding-top: 10px;
 }
+
 .content {
-  padding: 40px 15px;
-  text-align: center;
+    padding: 40px 15px;
+    padding-bottom: 60px;
+    /*text-align: center;*/
 }
+
 #player {
     padding: 6px 12px;
+    padding-left: 0px;
     margin: 0 auto;
 }
+
 #player .audiojs, #player .audiojs .loaded {
     background-image: none;
     background: none;
 }
+
 #player .audiojs .progress {
     background-image: none;
+    background: orange;
 }
+
 #player .audiojs .play-pause {
     width: 40px;
 }
 
-.navbar-brand {
+#footer a.playing {
+    background: orange;
+}
+
+#footer a.played {
+    color: gray;
+}
+
+#footer.navbar-inverse .navbar-nav>li>a:hover {
+    color: orange;
+}
+
+#footer .scrubber {
+        display: none;
+    }
+@media screen and (min-width: 768px) {
+    #footer .scrubber {
+        display: block;
+    }
+}
+
+#menu .navbar-brand {
     padding: 5px 15px;
 }
-.navbar-brand img {
+
+#menu .navbar-brand img {
     height: 40px;
 }
 
-.account {
+#menu .account {
     padding: 5px 15px;
     padding-right: 0;
+}
+
+/*#menu.navbar-inverse .navbar-nav>.open>a, #menu.navbar-inverse .navbar-nav>.open>a:hover, #menu.navbar-inverse .navbar-nav>.open>a:focus {*/
+#menu.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+    color: orange;
+}
+
+#menu.navbar-inverse .navbar-nav li.active > a {
+    border-bottom: 4px solid orange;
+    /*margin-bottom: -4px;*/
+    height: 50px;
+}
+
+.content {
+    text-align: center;
+}
+.content form {
+    display: inline-block;
+}
+.content form * {
+    margin-left: auto;
+    margin-right: auto;
+    /*text-align: left;*/
 }
