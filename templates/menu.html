@@ -5,20 +5,39 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-{#        <a class="navbar-brand" href="#">sender.fm</a>#}
+        {#        <a class="navbar-brand" href="#">sender.fm</a>#}
         <a class="navbar-brand" href="{% url 'pages:home' %}">
             <img src="http://sender.fm/pictures/sender.fm!sender_logo_transparent%20copy_gelber_punkt.png">
-{#            <img src="http://dance.eraldo.org/_/rsrc/1368232119618/config/customLogo.gif?revision=3">#}
+            {#            <img src="http://dance.eraldo.org/_/rsrc/1368232119618/config/customLogo.gif?revision=3">#}
         </a>
 
         <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'artists:artist_detail' pk=user.pk %}">profile</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'artists:artist_detail' pk=user.pk %}">profile</a></li>
+                {% endif %}
                 <li><a href="{% url 'pages:media' %}">media</a></li>
                 <li><a href="{% url 'pages:board' %}">board</a></li>
                 <li><a href="{% url 'pages:about' %}">about</a></li>
             </ul>
-            <a class="account pull-right" href="#contact"><img src="http://placehold.it/40x40"></a>
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="account dropdown-toggle" data-toggle="dropdown"><img src="http://placehold.it/40x40"><b class="caret"></b></a>
+{#                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>#}
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="{% url 'account_logout' %}">logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <a href="{% url 'account_login' %}" class="btn btn-default navbar-btn pull-right">sign in</a>
+{#                <button type="button" class="btn btn-default navbar-btn pull-right">Sign in</button>#}
+            {% endif %}
 
             <form class="navbar-form pull-right" action="">
                 <input type="text" class="form-control col-lg-8" placeholder="search">
