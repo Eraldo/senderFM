@@ -14,6 +14,9 @@
     <!-- Custom styles for this template -->
     <link href="{{ STATIC_URL }}pages/css/base.css" rel="stylesheet">
 
+    <!-- media player -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}mediaelement-2.8.2/mediaelementplayer.min.css"/>
+
     {% block extra-head %}{% endblock %}
 </head>
 
@@ -60,6 +63,57 @@
 <script>
     // determine the active selection in the menu
     $('#menu a[href*="' + location.pathname.split("/")[2] + '"][class!="noselect"]').parent("li").addClass('active');
+</script>
+
+<!-- media player -->
+{#<script>window.jQuery || document.write('<script src="{{ STATIC_URL }}mediaelement-2.8.2/jquery-1.7.2.min.js"><\/script>')</script>#}
+{#<script src="{{ STATIC_URL }}mediaelement-and-player.min.js"></script>#}
+<script src="{{ STATIC_URL }}mediaelement-2.8.2/mediaelement-and-player.min.js"></script>
+{#<script src="{% url 'player_script' %}"></script>#}
+
+{#<script>#}
+{#    // JavaScript object for later use#}
+{#    var player = new MediaElementPlayer({pluginPath: '{{ STATIC_URL }}mediaelement-2.8.2/'});#}
+{#    // ... more code ...#}
+{#    player.pause();#}
+{#    player.setSrc('http://robtowns.com/music/blind_willie.mp3');#}
+{#    player.play();#}
+{#</script>#}
+
+<script>
+// JavaScript object for later use
+{#new MediaElementPlayer();#}
+// ... more code ...
+{#player.pause();#}
+{#player.setSrc('mynewfile.mp4');#}
+{#player.play();#}
+</script>
+
+{#<script>#}
+{#// JavaScript object for later use#}
+{#var player = new MediaElementPlayer('#test-player', {pluginPath: '{{ STATIC_URL }}mediaelement-2.8.2/'});#}
+{#// ... more code ...#}
+{#player.pause();#}
+{#player.setSrc('http://robtowns.com/music/blind_willie.mp3');#}
+{#player.play();#}
+{#</script>#}
+
+<script>
+    // using jQuery
+    $('#player audio').mediaelementplayer({
+        audioWidth: '100%',
+        pluginPath: '{{ STATIC_URL }}mediaelement-2.8.2/'});
+    var mplayer = mejs.players[0]
+{#    mplayer.setSrc('http://robtowns.com/music/blind_willie.mp3');#}
+</script>
+
+<script>
+    function play(source) {
+        mplayer.pause();
+        mplayer.setSrc(source);
+        mplayer.load();
+        mplayer.play();
+    }
 </script>
 
 {% block extra-script %}{% endblock %}

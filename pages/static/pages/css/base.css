@@ -1,5 +1,6 @@
 body {
     padding-top: 10px;
+    text-align: center;
 }
 
 .content {
@@ -7,25 +8,75 @@ body {
     padding-bottom: 60px;
     /*text-align: center;*/
 }
-
-#player {
-    padding: 6px 12px;
-    padding-left: 0px;
-    margin: 0 auto;
+.content form {
+    display: inline-block;
+}
+.content form * {
+    margin-left: auto;
+    margin-right: auto;
+    /*text-align: left;*/
 }
 
-#player .audiojs, #player .audiojs .loaded {
-    background-image: none;
-    background: none;
-}
 
-#player .audiojs .progress {
-    background-image: none;
+/*#player {*/
+    /*padding: 6px 12px;*/
+    /*padding-left: 0px;*/
+    /*margin: 0 auto;*/
+/*}*/
+
+/*#player .audiojs, #player .audiojs .loaded {*/
+    /*background-image: none;*/
+    /*background: none;*/
+/*}*/
+
+/*#player .audiojs .progress {*/
+    /*background-image: none;*/
+    /*background: orange;*/
+/*}*/
+
+/*#player .audiojs .play-pause {*/
+    /*width: 40px;*/
+/*}*/
+
+.player-container .mejs-container .mejs-controls .mejs-time {
+    height: 30px;
+}
+.player-container .mejs-controls .mejs-time-rail .mejs-time-total {
+    background: dimgray;
+}
+.player-container .mejs-container .mejs-controls {
+    background: #222;
+}
+.player-container .mejs-controls .mejs-time-rail .mejs-time-loaded {
+    background: gray;
+}
+.player-container .mejs-controls .mejs-time-rail .mejs-time-current {
     background: orange;
 }
+#player {
+        display: table;
+}
+#player-display {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+#player-display li {
+    width: 100%;
+}
+#player-display #playlist {
+    width: 100%;
+    padding: 10px;
+}
+#player-display a {
+    margin-top: 5px;
+    margin-bottom: -5px;
+    z-index: 1;
+    padding: 0;
+}
 
-#player .audiojs .play-pause {
-    width: 40px;
+#footer .player-container {
+    width: 100%;
 }
 
 #footer a.playing {
@@ -73,14 +124,7 @@ body {
     height: 50px;
 }
 
-.content {
-    text-align: center;
-}
-.content form {
-    display: inline-block;
-}
-.content form * {
-    margin-left: auto;
-    margin-right: auto;
-    /*text-align: left;*/
-}
+/*.content {*/
+    /*text-align: center;*/
+/*}*/
+
